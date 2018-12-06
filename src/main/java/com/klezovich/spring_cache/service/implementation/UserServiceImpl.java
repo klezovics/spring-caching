@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	@Cacheable("users")
 	public User findByName(String name) {
         try {
-			Thread.sleep(4000);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
