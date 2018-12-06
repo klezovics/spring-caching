@@ -25,10 +25,10 @@ public class SpringCacheTestApplication implements CommandLineRunner {
 	}
 
 	
-	private void timeService( UserService us, String userName, int numIter ) {
+	private void timeService( UserService us, String userName, long numIter ) {
 		long start = System.currentTimeMillis();
-		for( int ii=0; ii<numIter; ii++ ) {
-			User u = fastUserService.findByName(userName);
+		for( long ii=0; ii<numIter; ii++ ) {
+			User u = us.findByName(userName);
 		}
 		long finish = System.currentTimeMillis();
 		System.out.println( us.getClass().getSimpleName() + " completion time(ms):" + (finish-start));
@@ -38,10 +38,11 @@ public class SpringCacheTestApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		String userName = "Arthur";
-		int numIter = 1000;
+		long numIter = 1000;
 		
-	    timeService(fastUserService, userName, numIter);
 		timeService(slowUserService, userName, numIter);
+	    timeService(fastUserService, userName, numIter);
+		
 		
 	}
 }
