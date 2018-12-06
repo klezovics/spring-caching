@@ -15,6 +15,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User findByName(String name) {
+        try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+        
 		return userRepository.findByName(name);
 	}
 
