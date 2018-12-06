@@ -1,6 +1,7 @@
 package com.klezovich.spring_cache.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import com.klezovich.spring_cache.entity.User;
@@ -14,6 +15,7 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepository;
 	
 	@Override
+	@Cacheable("users")
 	public User findByName(String name) {
         try {
 			Thread.sleep(4000);
